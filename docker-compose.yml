@@ -5,6 +5,7 @@ services:
       - "8080:8080"
     depends_on:
       - db
+      - redis
   db:
     image: postgres:17-alpine
     environment:
@@ -13,5 +14,7 @@ services:
       POSTGRES_DB: demo
     volumes:
       - /Users/david/tech4dev/v2/bootcamp/docker/data:/var/lib/postgresql/data
-# volumes:
-#   db_data:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
